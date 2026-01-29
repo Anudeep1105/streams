@@ -5,4 +5,13 @@
 //  Created by Anudeep Reddy on 29/01/26.
 //
 
-import Foundation
+import UIKit
+
+class ForgotPasswordController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        
+    }
+}

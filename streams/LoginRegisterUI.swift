@@ -22,6 +22,12 @@ extension LoginRegisterViewController {
 
     // MARK: - Background
     private func setupBackground() {
+
+        // Remove existing gradient if any
+        view.layer.sublayers?
+            .filter { $0 is CAGradientLayer }
+            .forEach { $0.removeFromSuperlayer() }
+
         let gradient = CAGradientLayer()
         gradient.colors = [
             UIColor(red: 15/255, green: 32/255, blue: 39/255, alpha: 1).cgColor,
@@ -35,6 +41,7 @@ extension LoginRegisterViewController {
 
         view.layer.insertSublayer(gradient, at: 0)
     }
+
 
     // MARK: - Email & Password (ROUNDED FIX)
     private func setupTextFields() {
@@ -71,7 +78,7 @@ extension LoginRegisterViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
-    // MARK: - Name field (already rounded, but normalized)
+    // MARK: - Name field 
     private func setupNameTextField() {
         let placeholderColor = UIColor.white.withAlphaComponent(0.6)
 
@@ -140,7 +147,7 @@ extension LoginRegisterViewController {
             self.titleLabel.text = "Hello,\nWelcome Back!"
             self.subtitleLabel.text = "Please enter your details to continue"
             self.nameTextField.alpha = 0
-            self.forgotPasswordLabel.alpha = 1
+            self.forgotPasswordButton.alpha = 1
             self.loginButton.setTitle("Login", for: .normal)
             self.view.layoutIfNeeded()
         }
@@ -151,7 +158,7 @@ extension LoginRegisterViewController {
             self.titleLabel.text = "Let’s Create\nAccount"
             self.subtitleLabel.text = "Create an account to get started"
             self.nameTextField.alpha = 1
-            self.forgotPasswordLabel.alpha = 0
+            self.forgotPasswordButton.alpha = 0
             self.loginButton.setTitle("Register", for: .normal)
             self.view.layoutIfNeeded()
         }

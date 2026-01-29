@@ -22,10 +22,15 @@ class HomeViewController: UIViewController {
     private var items: [PageItem] = []
 
     private let chatUsers: [PageItem] = [
-        PageItem(title: "First Chat",  subtitle: "Last Message", time: "10:45 PM", isChat: true),
-        PageItem(title: "Second Chat", subtitle: "Last Message", time: "10:45 PM", isChat: true),
-        PageItem(title: "Third Chat",  subtitle: "Last Message", time: "10:45 PM", isChat: true),
-        PageItem(title: "Fourth Chat", subtitle: "Last Message", time: "10:45 PM", isChat: true)
+        PageItem(title: "Sam",  subtitle: "Last Message", time: "10:20 PM", isChat: true,status: " ⚪ On Mobile"),
+        PageItem(title: "India", subtitle: "Last Message", time: "11:45 PM", isChat: true,status: "Company Team"),
+        PageItem(title: "Ben Ten",  subtitle: "Hey", time: "10:40 AM", isChat: true,status: " 📴 OFFLINE"),
+        PageItem(title: "Dora", subtitle: "Hello", time: "Yesterday", isChat: true,status: " ⚪ WFH"),
+        PageItem(title: "Nat",  subtitle: "Last Message", time: "10:20 PM", isChat: true,status: "⚪ On Mobile"),
+        PageItem(title: "Apple", subtitle: "Last Message", time: "11:45 PM", isChat: true,status: " ⚪ On Desktop"),
+        PageItem(title: "John",  subtitle: "Hey", time: "Last Month", isChat: true,status: " 📴 OFFLINE"),
+        PageItem(title: "Interns", subtitle: "Hello", time: "1:05 PM", isChat: true,status: "Private Team"),
+        PageItem(title: "Raj vardhan", subtitle: "HI", time: "Last Year", isChat: true,status: " Went To Break")
     ]
 
     override func viewDidLoad() {
@@ -38,6 +43,7 @@ class HomeViewController: UIViewController {
         highlightTopTab(chatsButton)
         highlightBottomTab(recentsButton)
         showChatList()
+        hideKeyboardWhenTappedAround()
     }
 
     // MARK: - Top Tabs
@@ -103,7 +109,9 @@ class HomeViewController: UIViewController {
             PageItem(title: "You are in \(name) page",
                      subtitle: nil,
                      time: nil,
-                     isChat: false)
+                     isChat: false,
+                     status: nil,
+                    )
         ]
         tableView.reloadData()
     }
@@ -142,4 +150,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
-
+//
+//extension UIViewController {
+//    func hideKeyboardWhenTappedAround() {
+//        let tap = UITapGestureRecognizer(
+//            target: self,
+//            action: #selector(UIViewController.dismissKeyboard)
+//        )
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+//}

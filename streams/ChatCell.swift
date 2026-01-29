@@ -26,7 +26,7 @@ class ChatCell: UITableViewCell {
 
         // Fonts
         nameLabel.font = .systemFont(ofSize: 16, weight: .semibold)
-        statusLabel.font = .systemFont(ofSize: 12)
+        statusLabel.font = .systemFont(ofSize: 12 )
         messageLabel.font = .systemFont(ofSize: 13)
         timeLabel.font = .systemFont(ofSize: 12)
 
@@ -60,7 +60,7 @@ class ChatCell: UITableViewCell {
             messageLabel.isHidden = false
             timeLabel.isHidden = false
 
-            statusLabel.text = "Status"
+            statusLabel.text = item.status
             messageLabel.text = item.subtitle
             timeLabel.text = item.time
 

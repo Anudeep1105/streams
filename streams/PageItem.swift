@@ -9,4 +9,5 @@ struct PageItem {
     let subtitle: String?
     let time: String?
     let isChat: Bool
+    let status: String?
 }
