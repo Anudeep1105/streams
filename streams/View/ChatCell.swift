@@ -1,12 +1,3 @@
-//
-//  ChatCell.swift
-//  streams
-//
-//  Created by Anudeep Reddy on 27/01/26.
-//
-
-
-// MARK: - ChatCell.swift
 import UIKit
 
 class ChatCell: UITableViewCell {
@@ -19,62 +10,46 @@ class ChatCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        // Avatar
-        avatarImageView.layer.cornerRadius = 20
-        avatarImageView.clipsToBounds = true
-
-        // Fonts
-        nameLabel.font = .systemFont(ofSize: 16, weight: .semibold)
-        statusLabel.font = .systemFont(ofSize: 12 )
-        messageLabel.font = .systemFont(ofSize: 13)
-        timeLabel.font = .systemFont(ofSize: 12)
-
-        // Colors
-        statusLabel.textColor = .gray
-        messageLabel.textColor = .lightGray
-        timeLabel.textColor = .lightGray
-
-        // IMPORTANT: spacing fix
-        nameLabel.numberOfLines = 1
-        statusLabel.numberOfLines = 1
-        messageLabel.numberOfLines = 1
+        setupUI()
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    private func setupUI() {
 
-        avatarImageView.isHidden = false
-        statusLabel.isHidden = false
-        messageLabel.isHidden = false
-        timeLabel.isHidden = false
-        nameLabel.textAlignment = .left
+        // Avatar
+        avatarImageView.layer.cornerRadius = 28
+        avatarImageView.clipsToBounds = true
+
+        // Title
+        nameLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        nameLabel.textColor = .white
+
+        // Status (subtitle)
+        statusLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        statusLabel.textColor = UIColor.white.withAlphaComponent(0.7)
+
+        // Message preview
+        messageLabel.font = .systemFont(ofSize: 15)
+        messageLabel.textColor = UIColor.white.withAlphaComponent(0.55)
+        messageLabel.numberOfLines = 1
+
+        // Time
+        timeLabel.font = .systemFont(ofSize: 12)
+        timeLabel.textColor = UIColor.white.withAlphaComponent(0.5)
     }
 
     func configure(with item: PageItem) {
+
         nameLabel.text = item.title
+        statusLabel.text = item.status
+        messageLabel.text = item.subtitle
+        timeLabel.text = item.time
 
-        if item.isChat {
-            avatarImageView.isHidden = false
-            statusLabel.isHidden = false
-            messageLabel.isHidden = false
-            timeLabel.isHidden = false
+        avatarImageView.isHidden = !item.isChat
+        timeLabel.isHidden = !item.isChat
 
-            statusLabel.text = item.status
-            messageLabel.text = item.subtitle
-            timeLabel.text = item.time
+        statusLabel.isHidden = item.status == nil
+        messageLabel.isHidden = item.subtitle == nil
 
-            // 🔽 This is what visually pushes "Last Message" down
-            statusLabel.textAlignment = .left
-            messageLabel.textAlignment = .left
-
-        } else {
-            avatarImageView.isHidden = true
-            statusLabel.isHidden = true
-            messageLabel.isHidden = true
-            timeLabel.isHidden = true
-
-            nameLabel.textAlignment = .center
-        }
+        nameLabel.textAlignment = item.isChat ? .left : .center
     }
 }

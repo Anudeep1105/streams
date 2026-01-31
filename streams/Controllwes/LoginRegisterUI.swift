@@ -1,10 +1,3 @@
-//
-//  LoginRegisterUI.swift
-//  streams
-//
-//  Created by Anudeep Reddy on 27/01/26.
-//
-
 import UIKit
 
 extension LoginRegisterViewController {
@@ -70,7 +63,7 @@ extension LoginRegisterViewController {
             textField.clipsToBounds = true
             textField.borderStyle = .none
 
-            textField.addLeftPadding()
+            textField.lr_addLeftPadding()
         }
 
         emailTextField.keyboardType = .emailAddress
@@ -78,7 +71,7 @@ extension LoginRegisterViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
-    // MARK: - Name field 
+    // MARK: - Name field
     private func setupNameTextField() {
         let placeholderColor = UIColor.white.withAlphaComponent(0.6)
 
@@ -96,7 +89,7 @@ extension LoginRegisterViewController {
         nameTextField.clipsToBounds = true
         nameTextField.borderStyle = .none
 
-        nameTextField.addLeftPadding()
+        nameTextField.lr_addLeftPadding()
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.alpha = 0
     }
@@ -167,7 +160,7 @@ extension LoginRegisterViewController {
 
 // MARK: - Padding Helper
 extension UITextField {
-    func addLeftPadding(_ padding: CGFloat = 16) {
+    func lr_addLeftPadding(_ padding: CGFloat = 16) {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: 1))
         leftView = view
         leftViewMode = .always

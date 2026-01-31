@@ -4,7 +4,6 @@
 //
 //  Created by Anudeep Reddy on 31/01/26.
 //
-
 import AppIntents
 
 @available(iOS 16.0, *)
@@ -23,7 +22,7 @@ enum StreamsSection: String, AppEnum {
     static var typeDisplayRepresentation =
         TypeDisplayRepresentation(name: "Streams Section")
 
-    static var caseDisplayRepresentations: [StreamsSection: DisplayRepresentation] = [
+    static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .chats: "Chats",
         .calls: "Calls",
         .voicemail: "Voicemail",

@@ -22,7 +22,6 @@ class LoginRegisterViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         if !didSetupUI {
             setupUI()
             switchToLogin()
@@ -32,20 +31,12 @@ class LoginRegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func toggleChanged(_ sender: UISegmentedControl) {
         sender.selectedSegmentIndex == 0
-        ? switchToLogin()
-        : switchToRegister()
+            ? switchToLogin()
+            : switchToRegister()
     }
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        UserDefaults.standard.set(true, forKey: "isLoggedIn")
-        performLogin()
-    }
-
-    private func performLogin() {
-        let email = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-
-        print("LOGIN →", email, password)
+        AuthService.shared.login()
         performSegue(withIdentifier: "goToHome", sender: self)
     }
 }

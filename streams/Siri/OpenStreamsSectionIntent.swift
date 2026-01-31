@@ -9,23 +9,27 @@ import UIKit
 
 @available(iOS 16.0, *)
 struct OpenStreamsSectionIntent: AppIntent {
+    init() {
+        
+    }
+    
 
     static var title: LocalizedStringResource = "Open Streams Section"
-    static var openAppWhenRun: Bool = true
+    static var openAppWhenRun = true
 
     @Parameter(title: "Section")
     var section: StreamsSection
 
+    // 🔑 REQUIRED initializer
+    init(section: StreamsSection) {
+        self.section = section
+    }
+
     func perform() async throws -> some IntentResult {
-
-        let urlString = "streams://\(section.rawValue)"
-
+        let url = URL(string: "streams://\(section.rawValue)")!
         await MainActor.run {
-            if let url = URL(string: urlString) {
-                UIApplication.shared.open(url)
-            }
+            UIApplication.shared.open(url)
         }
-
         return .result()
     }
 }
